@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sweet Magic — 3D-конструктор тортов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="layout">
+  <section id="stage" class="stage">
+    <div class="brand">Sweet Magic</div>
+    <div class="price-chip">Итого <span id="chip"></span></div>
+    <div class="hint">Вращайте торт, колёсиком или щипком меняйте масштаб</div>
+  </section>
+
+  <aside class="panel">
+    <div>
+      <h1 class="title">Соберите свой торт</h1>
+      <p class="lead">Кондитер свяжется с вами, чтобы согласовать детали и дату.</p>
+    </div>
+
+    <section class="section">
+      <h2 class="section-title">Ярусы</h2>
+      <div id="tiers" class="grid-3"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Форма</h2>
+      <div id="shapes" class="grid-3"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Вес</h2>
+        <div class="weight-value"><span id="weightVal"></span> кг</div>
+      </div>
+      <input id="weight" type="range" min="1.5" max="10" step="0.5" value="3" aria-label="Вес торта">
+      <div class="range-notes"><span id="wMin"></span><span id="wHint"></span><span id="wMax"></span></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Начинка</h2>
+      <div id="fillings" class="grid-2"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Цвет крема</h2>
+      <div id="colors" class="swatches"></div>
+      <p id="colorName" class="color-name"></p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Декор</h2>
+      <div id="decor" class="stack"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Надпись на торте</h2>
+        <span id="counter" class="counter">0 / 30</span>
+      </div>
+      <input id="inscription" class="field" maxlength="30" placeholder="Например: Маше 30 лет!">
+    </section>
+
+    <section class="section section-last">
+      <h2 class="section-title">Ваш заказ</h2>
+      <ul id="summary" class="summary"></ul>
+      <div class="total-row">
+        <span>Итого</span>
+        <span id="total" class="total"></span>
+      </div>
+      <div class="form">
+        <input id="name" class="field" placeholder="Ваше имя" autocomplete="name">
+        <input id="phone" class="field" placeholder="+7 900 000-00-00" inputmode="tel" autocomplete="tel">
+        <p id="error" class="error hidden"></p>
+        <button id="send" class="btn-primary">Отправить заказ кондитеру</button>
+      </div>
+    </section>
+  </aside>
+</div>
+
+<dialog id="modal">
+  <div class="modal-body">
+    <div id="mIcon" class="modal-icon hidden">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </div>
+    <h3 id="mTitle" class="modal-title"></h3>
+    <p id="mText" class="modal-text"></p>
+    <pre id="mSpec" class="modal-spec hidden"></pre>
+    <div class="modal-actions">
+      <button id="mCopy" class="btn-ghost hidden">Скопировать</button>
+      <button id="mClose" class="btn-solid">Понятно</button>
+    </div>
+  </div>
+</dialog>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
